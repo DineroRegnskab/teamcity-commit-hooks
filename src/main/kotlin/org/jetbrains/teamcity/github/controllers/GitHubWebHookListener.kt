@@ -313,7 +313,7 @@ class GitHubWebHookListener(private val WebControllerManager: WebControllerManag
         val httpId = info.id
         val sshId = info.server + ":" + info.owner + "/" + info.name
         val dispatcher = request.getRequestDispatcher("/app/rest/vcs-root-instances/commitHookNotification?" +
-                                                      "locator=(type:jetbrains.git,count:1000),or:(property:(name:url,value:$httpId,matchType:contains,ignoreCase:true),property:(name:url,value:$sshId,matchType:contains,ignoreCase:true)),count:1000")
+                                                      "locator=vcsRoot:(type:jetbrains.git,count:1000),or:(property:(name:url,value:$httpId,matchType:contains,ignoreCase:true),property:(name:url,value:$sshId,matchType:contains,ignoreCase:true)),count:1000")
         if (dispatcher != null) {
             val layered = LayeredHttpServletRequest(request)
             SessionUser.setUser(layered, user)
